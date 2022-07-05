@@ -1,0 +1,20 @@
+body {
+  font-family: arial, sans-serif;
+}
+.city-name {
+  color: #878787;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+.weather-app {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #d9dce0;
+  border-radius: 7px;
+}
+small {
+  color: #878787;
+}
