@@ -20,11 +20,9 @@ if (minutes < 10) {
 document.querySelector("#date").innerHTML = `${day} ${hour}:${minutes}`;
 
 function displayTemperature(response) {
-  let iconElement = document.querySelector("#weather-icon");
+  cTemp = response.data.main.temp;
 
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#temperature").innerHTML = Math.round(cTemp);
   document.querySelector(
     "#city"
   ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -54,5 +52,21 @@ function searchCity(event) {
   search(cityElement.value);
 }
 
+function showFTemp(event) {
+  event.preventDefault();
+  let fTemp = Math.round((cTemp * 9) / 5 + 32);
+  document.querySelector("#temperature").innerHTML = fTemp;
+}
+
+function showCTemp(event) {
+  event.preventDefault();
+  document.querySelector("#temperature").innerHTML = Math.round(cTemp);
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
+let fahrenheitLink = document.querySelector("#f-link");
+fahrenheitLink.addEventListener("click", showFTemp);
+let celciusLink = document.querySelector("#c-link");
+celciusLink.addEventListener("click", showCTemp);
+let cTemp = null;

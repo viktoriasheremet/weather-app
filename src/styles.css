@@ -49,3 +49,12 @@ small {
   text-decoration: none;
   color: darkblue;
 }
+.weather-app a {
+  color: #878787;
+  cursor: default;
+}
+.weather-app a:hover {
+  color: #878787;
+  cursor: default;
+  text-decoration: none;
+}
