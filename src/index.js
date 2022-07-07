@@ -20,7 +20,7 @@ if (minutes < 10) {
 document.querySelector("#date").innerHTML = `${day} ${hour}:${minutes}`;
 
 function displayTemperature(response) {
-  console.log(response.data.wind.speed);
+  let iconElement = document.querySelector("#weather-icon");
 
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -32,9 +32,18 @@ function displayTemperature(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "5e453ec37db04d7016a826b7caaff7a5";
-let city = "Kyiv";
+let city = "Paris";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
