@@ -58,3 +58,13 @@ small {
   cursor: default;
   text-decoration: none;
 }
+.forecast {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.temp-max,
+.temp-min {
+  font-size: 12px;
+}
