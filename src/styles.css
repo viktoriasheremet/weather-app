@@ -68,3 +68,6 @@ small {
 .temp-min {
   font-size: 12px;
 }
+.temp-min {
+  opacity: 70%;
+}
