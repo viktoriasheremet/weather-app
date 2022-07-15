@@ -1,24 +1,3 @@
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-document.querySelector("#date").innerHTML = `${day} ${hour}:${minutes}`;
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -52,16 +31,13 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates.lat);
   let apiKey = `5e453ec37db04d7016a826b7caaff7a5`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-///
 
 function displayTemperature(response) {
   cTemp = response.data.main.temp;
-
   document.querySelector("#temperature").innerHTML = Math.round(cTemp);
   document.querySelector(
     "#city"
@@ -79,9 +55,7 @@ function displayTemperature(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
-  ///
   getForecast(response.data.coord);
-  ///
 }
 function search(city) {
   let apiKey = "5e453ec37db04d7016a826b7caaff7a5";
@@ -95,21 +69,25 @@ function searchCity(event) {
   search(cityElement.value);
 }
 
-function showFTemp(event) {
-  event.preventDefault();
-  let fTemp = Math.round((cTemp * 9) / 5 + 32);
-  document.querySelector("#temperature").innerHTML = fTemp;
-}
-
-function showCTemp(event) {
-  event.preventDefault();
-  document.querySelector("#temperature").innerHTML = Math.round(cTemp);
-}
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
-let fahrenheitLink = document.querySelector("#f-link");
-fahrenheitLink.addEventListener("click", showFTemp);
-let celciusLink = document.querySelector("#c-link");
-celciusLink.addEventListener("click", showCTemp);
-let cTemp = null;
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+document.querySelector("#date").innerHTML = `${day} ${hour}:${minutes}`;
